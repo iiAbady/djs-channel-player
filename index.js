@@ -27,12 +27,12 @@ queue.push({
     url: video.url
 })
 })
-
 this.queue = queue;  
 
-console.log(this.client)
 
-stream(this.client, this.channel).then(console.log(`[INFO] Started streaming music.`)).catch(err => console.log(`[ERROR] ${err}`));
+this.client.on('ready', () => {
+    stream(this.client, this.channel);
+})
 
 const client = this.client
 const channel = this.channel
