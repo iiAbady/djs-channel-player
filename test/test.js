@@ -3,12 +3,8 @@ const client = new Client();
 const player = require('../index'); 
 const Player = new player(client, process.env.YT_KEY, process.env.CHANNEL, process.env.PLAYLIST); 
 client.login(process.env.TOKEN); 
-Player.play();
 
-client.on('ready', () => {
-    Player.play();
-    console.log(`Yo its ready.`)
-})
+Player.play(); 
 
 client.on('message', (message) => {
     if(message.content == 'np') {
