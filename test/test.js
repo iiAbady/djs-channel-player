@@ -6,9 +6,7 @@ client.login(process.env.TOKEN);
 Player.play();
 
 client.on('ready', () => {
-    console.log(client.voiceConnections.array())
-    console.log(client.voiceConnections.find(voice => voice.channel.id === '473645724568125451')); 
-    console.log(`Yo its ready. `)
+    console.log(`Yo its ready.`)
 })
 
 client.on('message', (message) => {
