@@ -34,6 +34,13 @@ this.client.on('ready', async () => {
     stream(this.client, this.channel).catch(err => console.log(`[ERROR] ${err}`))
 })
 
+this.client.on('disconnect', () => {
+    client.voiceConnections.forEach(voice => voice.disconnect()); 
+})
+
+this.client.on('reconnecting', () => {
+    stream(this.client, this.channel).catch(err => console.log(`[ERROR] ${err}`))
+})
 
 const client = this.client
 const channel = this.channel
