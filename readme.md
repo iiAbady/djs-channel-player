@@ -1,7 +1,7 @@
 # Discord.js Channel Player
 [![NPM](https://nodei.co/npm/djs-channel-player.png)](https://nodei.co/npm/djs-channel-player/)
 
-#About 
+## About 
 > A simple lib that make your bot play songs still in a voice channel with your playlist.
 
 ## Pre-installation
