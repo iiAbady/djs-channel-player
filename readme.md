@@ -1,6 +1,9 @@
 # Discord.js Channel Player
 > A simple lib that make your bot play songs still in a voice channel with your playlist.
 
+## Pre-installation
+Before you start to use this library, please don't forget to download [**FFMPEG**](http://ffmpeg.org/download.html) and make sure it's installed correctly in your OS.
+
 ## Install 
 ```bash
 npm i djs-channel-player
