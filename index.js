@@ -3,7 +3,7 @@ const YouTube = require('simple-youtube-api')
 
 class Player { 
     /**
-     * @param {EventListenerObject} client - Your d.js client. 
+     * @param {Client} client - Your d.js client. 
      * @param {String} ytkey - Your Youtube v3 data key. 
      * @param {String} channel - The channel you want bot to stay in id.
      * @param {String} playlist - playlist or video for the bot to play.
@@ -30,8 +30,8 @@ queue.push({
 
 this.queue = queue;  
 
-client.on('ready', () => {
-    console.log(`work.`)
+this.client.on('ready', () => {
+    return console.log(`YA!`)
 })
 
 
