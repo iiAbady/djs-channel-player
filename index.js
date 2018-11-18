@@ -13,6 +13,7 @@ this.client = client || null
 this.ytkey = ytkey || null
 this.channel = channel || null
 this.playlist = playlist || null
+this.queue = null; 
 }
 
 async play() {
@@ -20,12 +21,13 @@ const queue = [];
 const youtube = new YouTube(this.ytkey); 
 const playlist = await youtube.getPlaylist(this.playlist);
 const getVideos = await playlist.getVideos(); 
-getVideos.forEach(video => {
+await getVideos.forEach(video => {
 queue.push({
     title: video.title, 
     url: video.url
 })
-}) 
+})
+this.queue = queue;  
 
 this.client.on('ready', async () => {
     stream(this.client, this.channel)
@@ -44,9 +46,10 @@ async function stream() {
     }))
     client.user.setActivity(`${queue[0].title}`, {type: "LISTENING"});
 
-    dispatcher.on('end', () => {
+    dispatcher.on('end', async () => {
         const loop = queue.shift();
-        queue.push(loop);
+        await queue.push(loop);
+        this.queue = queue;
         return stream(client, channel, queue[0].url);
     })
      }}

@@ -8,3 +8,12 @@ Player.play();
 client.on('ready', () => {
     console.log(`Yo its ready. `)
 })
+
+client.on('message', (message) => {
+    if(message.content == 'np') {
+    return message.channel.send(`Now Playing: **${Player.queue[0].title}** Watch it here: **${Player.queue[0].url}**`);
+    } else if(message.content == 'queue') {
+        let i = 0
+        return message.channel.send(Player.queue.map(item => `${++i} ${item.title}`).join('\n')); 
+    }
+})
