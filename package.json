@@ -1,0 +1,23 @@
+{
+  "name": "djs-channel-player",
+  "version": "1.0.2",
+  "description": "A discord channel still music player",
+  "main": "index.js",
+  "keywords": [
+    "d.js",
+    "channel",
+    "player",
+    "music",
+    "player",
+    "discord",
+    "music",
+    "music"
+  ],
+  "author": "Abady <gamersspeaks@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "simple-youtube-api": "^5.0.2",
+    "ytdl-core": "^0.28.0"
+  }
+}
