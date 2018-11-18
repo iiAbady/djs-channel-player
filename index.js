@@ -17,6 +17,7 @@ this.queue = null;
 }
 
 async play() {
+console.log(`shit 1`)
 const queue = []; 
 const youtube = new YouTube(this.ytkey); 
 const playlist = await youtube.getPlaylist(this.playlist);
@@ -39,7 +40,9 @@ const client = this.client
 const channel = this.channel
 
 async function stream() {
+    console.log(`shit 2`)
     const connection = await client.channels.get(channel).join(); 
+    console.log(`shit 3`)
     const dispatcher = connection.playStream(ytdl(queue[0].url, {
         filter: 'audioonly',
         quality: 'highestaudio',
@@ -48,6 +51,7 @@ async function stream() {
     client.user.setActivity(`${queue[0].title}`, {type: "LISTENING"});
 
     dispatcher.on('end', () => {
+        console.log(`shit 4`)
         const loop = queue.shift();
         queue.push(loop);
         return stream(client, channel, queue[0].url);
