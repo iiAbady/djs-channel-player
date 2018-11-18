@@ -6,9 +6,8 @@ client.login(process.env.TOKEN);
 Player.play();
 
 client.on('ready', () => {
-    const voiceChannel = client.voice.connections.get("473645724568125451"); 
-    if(voiceChannel) console.log('Tetsing') 
-    else console.log(client.voice.connections.array()); 
+    console.log(client.voiceConnections.array())
+    console.log(client.voiceConnections.exists("channel", '473645724568125451'))
     console.log(`Yo its ready. `)
 })
 
