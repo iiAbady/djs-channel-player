@@ -31,7 +31,7 @@ queue.push({
 this.queue = queue;  
 
 this.client.on('ready', async () => {
-    stream(this.client, this.channel).catch(err => console.log(`[ERROR] ${err}`))
+    stream(this.client, this.channel).then(console.log(`[INFO] Started streaming music.`)).catch(err => console.log(`[ERROR] ${err}`))
 })
 
 const client = this.client
@@ -39,7 +39,6 @@ const channel = this.channel
 
 async function stream() {
     const connection = client.voiceConnections.get(channel) || await client.channels.get(channel).join();
-    console.log(connection);
     const dispatcher = connection.playStream(ytdl(queue[0].url, {
         filter: 'audioonly',
         quality: 'highestaudio',
