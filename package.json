@@ -1,6 +1,6 @@
 {
   "name": "djs-channel-player",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A discord channel still music player",
   "main": "index.js",
   "keywords": [
@@ -14,11 +14,19 @@
     "music"
   ],
   "author": "Abady <gamersspeaks@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "discord.js": "^11.4.2",
     "simple-youtube-api": "^5.0.2",
     "ytdl-core": "^0.28.0",
     "opusscript": "^0.0.6"
+  }, 
+  "homepage": "https://github.com/Abady321x123/djs-channel-player",
+  "bugs": {
+    "url": "https://github.com/Abady321x123/djs-channel-player/issues"
+  }, 
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/Abady321x123/djs-channel-player.git"
   }
 }
