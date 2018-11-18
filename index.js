@@ -21,7 +21,7 @@ const queue = [];
 const youtube = new YouTube(this.ytkey); 
 const playlist = await youtube.getPlaylist(this.playlist);
 const getVideos = await playlist.getVideos(); 
-await getVideos.forEach(video => {
+await getVideos.filter(v => v.thumbnails !== undefined ).forEach(video => {
 queue.push({
     title: video.title, 
     url: video.url
