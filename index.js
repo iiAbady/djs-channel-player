@@ -21,7 +21,7 @@ const queue = [];
 const youtube = new YouTube(this.ytkey); 
 const playlist = await youtube.getPlaylist(this.playlist);
 const getVideos = await playlist.getVideos(); 
-await getVideos.filter(v => v.thumbnails !== undefined ).forEach(video => {
+getVideos.filter(v => v.thumbnails !== undefined ).forEach(video => {
 queue.push({
     title: video.title, 
     url: video.url
@@ -31,7 +31,7 @@ queue.push({
 this.queue = queue;  
 
 this.client.on('ready', async () => {
-    stream(this.client, this.channel)
+    stream(this.client, this.channel).catch(err => console.log(`[ERROR] ${err}`))
 })
 
 
