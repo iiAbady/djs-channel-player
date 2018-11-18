@@ -6,8 +6,9 @@ Player.play();
 client.login(process.env.TOKEN); 
 
 client.on('ready', () => {
-
+    console.log(`work.`)
 })
+
 
 client.on('message', (message) => {
     if(message.content == 'np') {

@@ -21,7 +21,7 @@ const queue = [];
 const youtube = new YouTube(this.ytkey); 
 const playlist = await youtube.getPlaylist(this.playlist);
 const getVideos = await playlist.getVideos(); 
-await getVideos.forEach(video => {
+getVideos.filter(v => v.thumbnails !== undefined).forEach(video => {
 queue.push({
     title: video.title, 
     url: video.url
@@ -35,10 +35,10 @@ this.client.on('ready', async () => {
 })
 
 
-const _client = this.client
-const _channel = this.channel
+const client = this.client
+const channel = this.channel
 
-async function stream(channel, client) {
+async function stream() {
     const connection = await client.channels.get(channel).join(); 
     const dispatcher = connection.playStream(ytdl(queue[0].url, {
         filter: 'audioonly',
@@ -50,7 +50,7 @@ async function stream(channel, client) {
     dispatcher.on('end', () => {
         const loop = queue.shift();
         queue.push(loop);
-        return stream(_client, _channel, queue[0].url);
+        return stream(client, channel, queue[0].url);
     })
      }}
 
