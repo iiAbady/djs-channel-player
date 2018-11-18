@@ -6,6 +6,7 @@ client.login(process.env.TOKEN);
 Player.play();
 
 client.on('ready', () => {
+    Player.play();
     console.log(`Yo its ready.`)
 })
 
