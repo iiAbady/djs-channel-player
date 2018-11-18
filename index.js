@@ -30,7 +30,8 @@ queue.push({
 
 this.queue = queue;  
 
-this.client.on('ready', async () => {
+this.client.on('ready', () => {
+    console.log('testing')
     stream(this.client, this.channel).then(console.log(`[INFO] Started streaming music.`)).catch(err => console.log(`[ERROR] ${err}`))
 })
 
