@@ -27,6 +27,7 @@ queue.push({
     url: video.url
 })
 })
+
 this.queue = queue;  
 
 this.client.on('ready', async () => {
@@ -46,10 +47,9 @@ async function stream() {
     }))
     client.user.setActivity(`${queue[0].title}`, {type: "LISTENING"});
 
-    dispatcher.on('end', async () => {
+    dispatcher.on('end', () => {
         const loop = queue.shift();
-        await queue.push(loop);
-        this.queue = queue;
+       queue.push(loop);
         return stream(client, channel, queue[0].url);
     })
      }}
