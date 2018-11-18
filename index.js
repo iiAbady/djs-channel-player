@@ -31,7 +31,7 @@ this.queue = queue;
 
 
 this.client.on('ready', () => {
-    stream(this.client, this.channel);
+    return console.log('hey'); 
 })
 
 const client = this.client
