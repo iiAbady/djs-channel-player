@@ -38,7 +38,7 @@ const client = this.client
 const channel = this.channel
 
 async function stream() {
-    const connection = await client.channels.get(channel).join() 
+    const connection = client.voiceConnections.get(channel) || await client.channels.get(channel).join();
     const dispatcher = connection.playStream(ytdl(queue[0].url, {
         filter: 'audioonly',
         quality: 'highestaudio',

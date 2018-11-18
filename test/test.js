@@ -7,7 +7,7 @@ Player.play();
 
 client.on('ready', () => {
     console.log(client.voiceConnections.array())
-    console.log(client.voiceConnections.exists("channel", '473645724568125451'))
+    console.log(client.voiceConnections.find(voice => voice.channel.id === '473645724568125451')); 
     console.log(`Yo its ready. `)
 })
 
