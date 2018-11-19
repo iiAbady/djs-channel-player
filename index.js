@@ -19,7 +19,6 @@ this.queue = null;
 async play() {
 const client = this.client
 const channel = this.channel
-client.user.setActivity("Loading...", {type: "LISTENING"}) 
 const queue = []; 
 const youtube = new YouTube(this.ytkey); 
 const playlist = await youtube.getPlaylist(this.playlist);
@@ -34,6 +33,7 @@ queue.push({
 this.queue = queue;  
 
 client.on('ready', () => {
+ client.user.setActivity("Loading...", {type: "LISTENING"}) 
   console.log(`YA!`)
 })
 
