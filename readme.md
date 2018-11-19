@@ -13,27 +13,29 @@ const {Client} = require("discord.js")
 const client = new Client();
 const Player = require('djs-channel-player')
 const player = new Player(client, 'Your Youtube v3 Key', 'the voice channel ID here', 'the youtube playlist')
+client.on('ready' () => {
+    Player.play(); 
+})
 ```
 
 ## Example
 ```js
-const {Client} = require('discord.js');
+const {Client, RichEmbed} = require('discord.js');
 const client = new Client(); 
-const player = require('./index'); 
-const Player = new player(client, 'secert yt key (:', '473645724568125451', 'https://www.youtube.com/watch?v=wXcdYBh3hgg&list=PLVuQBUGB87-gomoG36CV4wMZCkGPGKw3p'); 
-client.login('token here'); 
-Player.play();
+const player = require('../index'); 
+const Player = new player(client, process.env.YT_KEY, process.env.CHANNEL, process.env.PLAYLIST); 
+client.login(process.env.TOKEN); 
 
 client.on('ready', () => {
-    console.log(`Yo its ready. `)
-})
+Player.play(); // this need to be here!
+}) 
 
 client.on('message', (message) => {
-    if(message.content == 'np') {
+    if(message.content == 'np') { 
     return message.channel.send(`Now Playing: **${Player.queue[0].title}** Watch it here: **${Player.queue[0].url}**`);
     } else if(message.content == 'queue') {
         let i = 0
-        return message.channel.send(new RichEmbed().setAuthor(message.guild.name, message.guild.iconURL).setDescription(Player.queue.map(item => `#**${++i}** ${item.title}`).join('\n')).setColor('RANDOM')); 
+        return message.channel.send(new RichEmbed().setAuthor(`${message.guild.name} - ${Player.queue.length} songs.`, message.guild.iconURL).setDescription(Player.queue.slice(0, 10).map(item => `#**${++i}** ${item.title}`).join('\n')).setFooter(`Only displaying the first 10 items in the queue`).setColor('RANDOM')); 
     }
 })
 ```

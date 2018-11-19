@@ -32,11 +32,8 @@ queue.push({
 
 this.queue = queue;
 
-client.on('ready', () => {
- console.log(`[INFO] Started streaming at ${client.channels.get(channel).name}`)
- client.user.setActivity("Loading...", {type: "LISTENING"}) 
- stream(client, channel).catch(err => console.log(`[ERROR:STREAMING] ${err}`)); 
-})
+client.user.setActivity("Loading...", {type: "LISTENING"}) 
+stream(client, channel).catch(err => console.log(`[ERROR:STREAMING] ${err}`)).then(console.log(`[INFO] Started streaming at ${client.channels.get(channel).name}`)); 
 
 
 async function stream() {

@@ -4,12 +4,12 @@ const player = require('../index');
 const Player = new player(client, process.env.YT_KEY, process.env.CHANNEL, process.env.PLAYLIST); 
 client.login(process.env.TOKEN); 
 
-Player.play().catch(err => console.log(`[ERROR:PLAYING] ${err}`));
-
+client.on('ready', () => {
+Player.play(); 
+}) 
 
 client.on('message', (message) => {
-    if(message.content == 'np') {
-    console.log(Player.dispatcher); 
+    if(message.content == 'np') { 
     return message.channel.send(`Now Playing: **${Player.queue[0].title}** Watch it here: **${Player.queue[0].url}**`);
     } else if(message.content == 'queue') {
         let i = 0
