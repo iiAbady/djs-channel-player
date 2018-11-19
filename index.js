@@ -19,7 +19,7 @@ this.dispatcher = null;
 
 async play() {
 let _dispatcher; 
-this.dispatcher = __dispatcher
+this.dispatcher = _dispatcher
 const client = this.client
 const channel = this.channel
 const queue = []; 
