@@ -60,6 +60,9 @@ async function stream() {
      skip() {
          this.dispatcher.end("skip");
      }
+     fix() {
+         stream(this.client, this.channel); 
+     }
 
 
 }
