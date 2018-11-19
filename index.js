@@ -23,18 +23,19 @@ const queue = [];
 const youtube = new YouTube(this.ytkey); 
 const playlist = await youtube.getPlaylist(this.playlist);
 const getVideos = await playlist.getVideos(); 
-getVideos.filter(v => v.thumbnails !== undefined).forEach(video => {
-queue.push({
-    title: video.title, 
-    url: video.url
-})
-})
 
 this.queue = queue;
 
-client.user.setActivity("Loading...", {type: "LISTENING"}) 
-stream(client, channel).catch(err => console.log(`[ERROR:STREAMING] ${err}`)).then(console.log(`[INFO] Started streaming at ${client.channels.get(channel).name}`)); 
-
+client.on('ready', async () => {
+    await getVideos.filter(v => v.thumbnails !== undefined).forEach(video => {
+        queue.push({
+            title: video.title, 
+            url: video.url
+        })
+        })
+        client.user.setActivity("Loading...", {type: "LISTENING"}) 
+       stream(client, channel).catch(err => console.log(`[ERROR:STREAMING] ${err}`)).then(console.log(`[INFO] Started streaming at ${client.channels.get(channel).name}`)); 
+})
 
 async function stream() {
     const connection = await client.channels.get(channel).join();
