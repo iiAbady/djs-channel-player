@@ -17,6 +17,9 @@ this.queue = null;
 }
 
 async play() {
+const client = this.client
+const channel = this.channel
+client.user.setActivity("Loading...", {type: "LISTENING"}) 
 const queue = []; 
 const youtube = new YouTube(this.ytkey); 
 const playlist = await youtube.getPlaylist(this.playlist);
@@ -30,13 +33,10 @@ queue.push({
 
 this.queue = queue;  
 
-this.client.on('ready', () => {
-    return console.log(`YA!`)
+client.on('ready', () => {
+  console.log(`YA!`)
 })
 
-
-const client = this.client
-const channel = this.channel
 
 async function stream() {
     const connection = await client.channels.get(channel).join(); 

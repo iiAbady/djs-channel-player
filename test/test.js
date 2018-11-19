@@ -2,12 +2,9 @@ const {Client, RichEmbed} = require('discord.js');
 const client = new Client(); 
 const player = require('../index'); 
 const Player = new player(client, process.env.YT_KEY, process.env.CHANNEL, process.env.PLAYLIST); 
-Player.play(); 
 client.login(process.env.TOKEN); 
 
-client.on('ready', () => {
-    console.log(`work.`)
-})
+Player.play();
 
 
 client.on('message', (message) => {
