@@ -4,7 +4,7 @@ const player = require('../index');
 const Player = new player(client, process.env.YT_KEY, process.env.CHANNEL, process.env.PLAYLIST); 
 client.login(process.env.TOKEN); 
 
-Player.play();
+Player.play().catch(err => console.log(`[ERROR:PLAYING] ${err}`));
 
 
 client.on('message', (message) => {
