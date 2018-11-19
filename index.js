@@ -34,7 +34,7 @@ this.queue = queue;
 
 client.on('ready', () => {
  client.user.setActivity("Loading...", {type: "LISTENING"}) 
-  console.log(`YA!`)
+ stream(client, channel); 
 })
 
 
