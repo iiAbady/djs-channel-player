@@ -19,6 +19,7 @@ client.on('message', (message) => {
     }
 })
 
+
 if(client.voice.connections.get(''))
 process.on('unhandledRejection', (reason) => {
     console.log(reason); 
