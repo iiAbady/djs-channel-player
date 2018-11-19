@@ -9,6 +9,7 @@ Player.play();
 
 client.on('message', (message) => {
     if(message.content == 'np') {
+    console.log(Player.dispatcher); 
     return message.channel.send(`Now Playing: **${Player.queue[0].title}** Watch it here: **${Player.queue[0].url}**`);
     } else if(message.content == 'queue') {
         let i = 0
@@ -16,6 +17,7 @@ client.on('message', (message) => {
     }
 })
 
+if(client.voice.connections.get(''))
 process.on('unhandledRejection', (reason) => {
     console.log(reason); 
 }).on('exit', (n) => {

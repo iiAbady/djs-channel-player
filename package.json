@@ -19,7 +19,7 @@
     "discord.js": "^11.4.2",
     "simple-youtube-api": "^5.0.2",
     "ytdl-core": "^0.28.0",
-    "opusscript": "^0.0.6"
+    "node-opus": "^0.3.1"
   }, 
   "homepage": "https://github.com/Abady321x123/djs-channel-player",
   "bugs": {
