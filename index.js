@@ -36,7 +36,6 @@ queue.push({
 this.queue = queue;
 
 client.on('ready', () => {
- client.voice.connections.forEach(v => v.disconnect())
  client.user.setActivity("Loading...", {type: "LISTENING"}) 
  stream(client, channel); 
 })

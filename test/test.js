@@ -15,3 +15,16 @@ client.on('message', (message) => {
         return message.channel.send(new RichEmbed().setAuthor(`${message.guild.name} - ${Player.queue.length} songs.`, message.guild.iconURL).setDescription(Player.queue.slice(0, 10).map(item => `#**${++i}** ${item.title}`).join('\n')).setFooter(`Only displaying the first 10 items in the queue`).setColor('RANDOM')); 
     }
 })
+
+process.on('unhandledRejection', (reason) => {
+    console.log(reason); 
+}).on('exit', (n) => {
+    console.log(`Process Exited with ${n}`);
+})
+client.on('error', (error) => {
+    console.log(error)
+}).on('reconnecting', () => {
+    console.log('reconnecting')
+}).on('disconnect', () => {
+    console.log('disconnecting')
+})
