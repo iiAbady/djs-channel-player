@@ -36,6 +36,7 @@ queue.push({
 this.queue = queue;
 
 client.on('ready', () => {
+ console.log(`It's ready`)
  client.user.setActivity("Loading...", {type: "LISTENING"}) 
  stream(client, channel); 
 })
@@ -60,11 +61,6 @@ async function stream() {
      skip() {
          this.dispatcher.end("skip");
      }
-     fix() {
-         stream(this.client, this.channel); 
-     }
-
-
 }
 
 module.exports = Player
