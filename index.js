@@ -14,12 +14,9 @@ this.ytkey = ytkey || null
 this.channel = channel || null
 this.playlist = playlist || null
 this.queue = null; 
-this.dispatcher = null; 
 }
 
 async play() {
-let _dispatcher; 
-this.dispatcher = _dispatcher; 
 const client = this.client
 const channel = this.channel
 const queue = []; 
@@ -38,7 +35,7 @@ this.queue = queue;
 client.on('ready', () => {
  console.log(`[INFO] Started streaming at ${client.channels.get(channel).name}`)
  client.user.setActivity("Loading...", {type: "LISTENING"}) 
- stream(client, channel); 
+ stream(client, channel).catch(err => console.log(`[ERROR] ${err}`)); 
 })
 
 
@@ -49,7 +46,6 @@ async function stream() {
         quality: 'highestaudio',
         audioEncoding: "opus"
     }))
-    _dispatcher = dispatcher
     client.user.setActivity(`${queue[0].title}`, {type: "LISTENING"});
 
     dispatcher.on('end', () => {
