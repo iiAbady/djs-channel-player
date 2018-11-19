@@ -39,7 +39,6 @@ async function stream() {
         quality: 'highestaudio',
         audioEncoding: "opus"
     }))
-    _dispatcher = dispatcher;
     client.user.setActivity(`${queue[0].title}`, {type: "LISTENING"});
     console.log(`[INFO] Started streaming ${queue[0].title} at ${client.channels.get(channel).name}.`)
 
