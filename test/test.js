@@ -14,6 +14,8 @@ client.on('message', (message) => {
     } else if(message.content == 'queue') {
         let i = 0
         return message.channel.send(new RichEmbed().setAuthor(`${message.guild.name} - ${Player.queue.length} songs.`, message.guild.iconURL).setDescription(Player.queue.slice(0, 10).map(item => `#**${++i}** ${item.title}`).join('\n')).setFooter(`Only displaying the first 10 items in the queue`).setColor('RANDOM')); 
+    } else if(message.content == 'skip') {
+        console.log(Player.dispatcher); 
     }
 })
 
