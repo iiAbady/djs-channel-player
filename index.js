@@ -14,9 +14,12 @@ this.ytkey = ytkey || null
 this.channel = channel || null
 this.playlist = playlist || null
 this.queue = null; 
+this.dispatcher = null; 
 }
 
 async play() {
+let _dispatcher; 
+this.dispatcher = _dispatcher; 
 const client = this.client
 const channel = this.channel
 const queue = []; 
@@ -30,7 +33,7 @@ queue.push({
 })
 })
 
-this.queue = queue;  
+this.queue = queue;
 
 client.on('ready', () => {
  client.user.setActivity("Loading...", {type: "LISTENING"}) 
@@ -45,6 +48,7 @@ async function stream() {
         quality: 'highestaudio',
         audioEncoding: "opus"
     }))
+    _dispatcher = dispatcher
     client.user.setActivity(`${queue[0].title}`, {type: "LISTENING"});
 
     dispatcher.on('end', () => {
@@ -53,6 +57,9 @@ async function stream() {
         return stream(client, channel, queue[0].url);
     })
      }}
+     skip() {
+         this.dispatcher.end("skip");
+     }
 
 
 }
