@@ -22,12 +22,12 @@ client.on('ready' () => {
 ```js
 const {Client, RichEmbed} = require('discord.js');
 const client = new Client(); 
-const player = require('../index'); 
+const player = require('djs-channel-player'); 
 const Player = new player(client, process.env.YT_KEY, process.env.CHANNEL, process.env.PLAYLIST); 
 client.login(process.env.TOKEN); 
 
 client.on('ready', () => {
-Player.play(); // this need to be here!
+Player.play(); // This will play once the bot is started!
 }) 
 
 client.on('message', (message) => {

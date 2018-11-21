@@ -22,11 +22,10 @@ let _dispatcher;
 this.dispatcher = _dispatcher
 const client = this.client
 const channel = this.channel
-const queue = []; 
 const youtube = new YouTube(this.ytkey); 
 const playlist = await youtube.getPlaylist(this.playlist);
 const getVideos = await playlist.getVideos(); 
-getVideos.filter(v => v.thumbnails !== undefined).forEach(video => {queue.push({title: video.title, url: video.url})}); 
+const queue = getVideos.filter(v => v.thumbnails !== undefined);  
 this.queue = queue;
 
 client.user.setActivity("Loading...", {type: "LISTENING"}) 
