@@ -13,8 +13,11 @@
     "music",
     "music"
   ],
+  "scripts": {
+    "lint": "eslint ./"
+  },
   "author": "Abady <gamersspeaks@gmail.com>",
-  "license": "MIT",
+  "license": "MIT",           
   "dependencies": {
     "discord.js": "^11.4.2",
     "simple-youtube-api": "^5.0.2",
