@@ -11,15 +11,13 @@ Player.play();
 client.on('message', (message) => {
     const prefixMention = new RegExp(`^<@!?${client.user.id}> `),prefix=message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : '!';
     if(message.channel.id === "406529468828614666" || "514155011056467971") {
-        if(message.content.startsWith(prefix)) {
-      if(message.content == 'np') {
+      if(message.content == `${prefix}np`) {
       return message.channel.send(new RichEmbed().setDescription(`🎵 Now Playing:\n**[${Player.queue[0].title}](${Player.queue[0].url})**`).setThumbnail(Player.queue[0].thumbnails.high.url).setColor(`BLUE`));
-      } else if(message.content == 'queue') {
+      } else if(message.content == `${prefix}queue`) {
           let i = 0
           return message.channel.send(new RichEmbed()
   .setDescription(`🎵 Now Playing:\n**[${Player.queue[0].title}](${Player.queue[0].url})** \n\n🎵 Queue\n`+Player.queue.slice(1, 10).map(item => `${++i}. [${item.title}](${item.url})`).join('\n'))
   .setFooter(`Only displaying the first 10 items in the queue - djs-channel-player ${player}`).setColor('RANDOM').setThumbnail(Player.queue[0].thumbnails.high.url)); 
-      }
     }
     }
   })
