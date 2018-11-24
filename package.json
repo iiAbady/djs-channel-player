@@ -17,19 +17,22 @@
     "lint": "eslint ./"
   },
   "author": "Abady <gamersspeaks@gmail.com>",
-  "license": "MIT",           
+  "license": "MIT",
   "dependencies": {
     "discord.js": "^11.4.2",
     "simple-youtube-api": "^5.0.2",
     "ytdl-core": "^0.28.0",
     "node-opus": "^0.3.1"
-  }, 
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0"
+  },
   "homepage": "https://github.com/Abady321x123/djs-channel-player",
   "bugs": {
     "url": "https://github.com/Abady321x123/djs-channel-player/issues"
-  }, 
+  },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/Abady321x123/djs-channel-player.git"
+    "type": "git",
+    "url": "https://github.com/Abady321x123/djs-channel-player.git"
   }
 }
