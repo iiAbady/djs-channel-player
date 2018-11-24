@@ -32,6 +32,7 @@ client.user.setActivity("Loading...", {type: "LISTENING"})
 stream(client, channel).catch(err => console.log(`[ERROR:STREAMING] ${err}`)); 
 
 async function stream() {
+    console.log(client.voiceConnections.get(channel))
     const connection = await client.channels.get(channel).join();
     const dispatcher = connection.playStream(ytdl(queue[0].url, {
         filter: 'audioonly',
