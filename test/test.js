@@ -17,7 +17,7 @@ client.on('message', (message) => {
           let i = 0
           return message.channel.send(new RichEmbed()
   .setDescription(`🎵 Now Playing:\n**[${Player.queue[0].title}](${Player.queue[0].url})** \n\n🎵 Queue\n`+Player.queue.slice(1, 10).map(item => `${++i}. [${item.title}](${item.url})`).join('\n'))
-  .setFooter(`Only displaying the first 10 items in the queue - djs-channel-player ${player}`).setColor('RANDOM').setThumbnail(Player.queue[0].thumbnails.high.url)); 
+  .setFooter(`Only displaying the first 10 items in the queue`).setColor('RANDOM').setThumbnail(Player.queue[0].thumbnails.high.url)); 
     }
     }
   })
