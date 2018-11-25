@@ -31,7 +31,7 @@ this.queue = queue;
 client.user.setActivity("Loading...", {type: "LISTENING"}) 
 stream(client, channel).catch(err => console.log(`[ERROR:STREAMING] ${err}`)); 
 
-async function stream() { 
+async function stream() {
     const connection = await client.channels.get(channel).join();
     const dispatcher = connection.playStream(ytdl(queue[0].url, {
         filter: 'audioonly',
@@ -44,6 +44,7 @@ async function stream() {
     dispatcher.on('end', () => {
         const loop = queue.shift();
         queue.push(loop);
+        if(dispatcher.channel.members.size < 1) return; 
         return stream(client, channel, queue[0].url);
     }).on('error', (err) => {
         console.error(`[ERROR:DISPATCHER]`, err);

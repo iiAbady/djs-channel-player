@@ -1,5 +1,6 @@
 # Discord.js Channel Player
 [![NPM](https://nodei.co/npm/djs-channel-player.png)](https://nodei.co/npm/djs-channel-player/)
+***
 
 ## About 
 > A simple lib that make your bot play songs still in a voice channel with your playlist.
@@ -39,3 +40,8 @@ client.on('message', (message) => {
     }
 })
 ```
+# Changelog (last 3 versions)
+***  
+## 1.2.7
+* Now you can have channel or a single video in playlist param.
+* Updated test/test.js to more advanced.
