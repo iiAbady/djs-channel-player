@@ -31,12 +31,13 @@ stream(client, channel).catch(err => console.log(`[ERROR:STREAMING] ${err}`));
 
 async function stream() {
     const connection = await client.channels.get(channel).join();
+    console.log(connection); 
     const dispatcher = connection.playStream(ytdl(queue[0].url, {
         filter: 'audioonly',
         quality: 'highestaudio',
         audioEncoding: "opus"
-    }))
-    console.log(client.voiceConnections.get(channel))
+    }), {bitrate: "auto"}); 
+    console.log(client.voiceConnections.map(m => `${m.channel.id} - ${m.channel.name}`));
     client.user.setActivity(`${queue[0].title}`, {type: "LISTENING"});
     console.log(`[INFO] Started streaming ${queue[0].title} at ${client.channels.get(channel).name}.`)
 
