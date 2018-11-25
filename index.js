@@ -34,22 +34,26 @@ async function stream() {
     const dispatcher = connection.playStream(ytdl(queue[0].url, {
         filter: 'audioonly',
     })); 
-    
+
     client.user.setActivity(`${queue[0].title}`, {type: "LISTENING"});
     console.log(`[INFO] Started streaming ${queue[0].title} at ${client.channels.get(channel).name}.`)
 
     dispatcher.on('end', () => {
         const loop = queue.shift();
         queue.push(loop);
-        dispatcher.destroy().then(console.log(`[INFO] Destoryed the current dispatcher.`));
         return stream(client, channel, queue[0].url);
-    }).on('error', (err) => {
+    })
+    
+    dispatcher.on('error', (err) => {
         console.error(`[ERROR:DISPATCHER]`, err);
     }).on('speaking', (result) => {
-        return console.log(`[DEBUG:DISPATCHER] ${result}`)
+        return console.log(`[SPEAKING:DISPATCHER] ${result}`)
     }).on('start', () => {
         console.log(`[STARTED:DISPATCHER]`)
+    }).on('debug', (info) => {
+        console.log(`[DEBUG:DISPATCHER] ${info}`)
     })
+
      }}
 }
 
