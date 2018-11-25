@@ -42,6 +42,6 @@ client.on('message', (message) => {
 ```
 # Changelog (last 3 versions)
 ***  
-## 1.2.7
-* Now you can have channel or a single video in playlist param.
-* Updated test/test.js to more advanced.
+## 1.2.6
+* Some fixes
+* Deleted some non-important
