@@ -38,13 +38,14 @@ async function stream() {
         quality: 'highestaudio',
         audioEncoding: "opus"
     }))
+    console.log(client.voiceConnections.get(channel).channel.id)
+    console.log(client.voiceConnections.get(channel))
     client.user.setActivity(`${queue[0].title}`, {type: "LISTENING"});
     console.log(`[INFO] Started streaming ${queue[0].title} at ${client.channels.get(channel).name}.`)
 
     dispatcher.on('end', () => {
         const loop = queue.shift();
         queue.push(loop);
-        if(dispatcher.channel.members.size < 1) return; 
         return stream(client, channel, queue[0].url);
     }).on('error', (err) => {
         console.error(`[ERROR:DISPATCHER]`, err);

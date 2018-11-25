@@ -8,12 +8,6 @@ client.on('ready', () => {
 Player.play();
 })
 
-client.on('voiceStateUpdate', (oldMember, newMember)=> {
-  if(oldMember.voiceChannel === undefined && newMember.voiceChannel !== undefined && newMember.voiceChannel.id === process.env.CHANNEL) {
-    Player.play(); 
-  }
-})
-
 client.on('message', (message) => {
     const prefixMention = new RegExp(`^<@!?${client.user.id}> `),prefix=message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : '!';
     if(message.channel.id === "406529468828614666" || "514155011056467971") {
