@@ -18,8 +18,6 @@ this.dispatcher = null;
 }
 
 async play() {
-let _dispatcher; 
-this.dispatcher = _dispatcher
 const client = this.client
 const channel = this.channel
 const youtube = new YouTube(this.ytkey); 
@@ -38,7 +36,6 @@ async function stream() {
         quality: 'highestaudio',
         audioEncoding: "opus"
     }))
-    console.log(client.voiceConnections.get(channel).channel.id)
     console.log(client.voiceConnections.get(channel))
     client.user.setActivity(`${queue[0].title}`, {type: "LISTENING"});
     console.log(`[INFO] Started streaming ${queue[0].title} at ${client.channels.get(channel).name}.`)
@@ -46,6 +43,7 @@ async function stream() {
     dispatcher.on('end', () => {
         const loop = queue.shift();
         queue.push(loop);
+        dispatcher.destroy();
         return stream(client, channel, queue[0].url);
     }).on('error', (err) => {
         console.error(`[ERROR:DISPATCHER]`, err);
