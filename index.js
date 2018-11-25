@@ -30,23 +30,22 @@ client.user.setActivity("Loading...", {type: "LISTENING"})
 stream(client, channel).catch(err => console.log(`[ERROR:STREAMING] ${err}`)); 
 
 async function stream() {
-    const connection = client.voiceConnections.get(channel) || await client.channels.get(channel).join();
+    const connection = await client.channels.get(channel).join();
     const dispatcher = connection.playStream(ytdl(queue[0].url, {
         filter: 'audioonly'
-    })); 
+    })).on('end', () => {
+        const loop = queue.shift();
+        queue.push(loop);
+        stream(client, channel, queue[0].url);
+    }).on('error', (err) => {
+        console.error(`[ERROR:DISPATCHER]`, err);
+    }); 
+    dispatcher.setBitrate("auto"); 
+
 
     client.user.setActivity(`${queue[0].title}`, {type: "LISTENING"});
     console.log(`[INFO] Started streaming ${queue[0].title} at ${client.channels.get(channel).name}.`)
 
-    dispatcher.on('end', () => {
-        const loop = queue.shift();
-        queue.push(loop);
-        return stream(client, channel, queue[0].url);
-    })
-    
-    dispatcher.on('error', (err) => {
-        console.error(`[ERROR:DISPATCHER]`, err);
-    })
      }}
 }
 
