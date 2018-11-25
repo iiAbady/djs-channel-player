@@ -33,6 +33,7 @@ async function stream() {
     const connection = client.voiceConnections.get(channel) || await client.channels.get(channel).join();
     const dispatcher = connection.playStream(ytdl(queue[0].url, {
         filter: 'audioonly',
+        quality: 'highestaudio'
     })); 
 
     client.user.setActivity(`${queue[0].title}`, {type: "LISTENING"});
@@ -46,14 +47,7 @@ async function stream() {
     
     dispatcher.on('error', (err) => {
         console.error(`[ERROR:DISPATCHER]`, err);
-    }).on('speaking', (result) => {
-        return console.log(`[SPEAKING:DISPATCHER] ${result}`)
-    }).on('start', () => {
-        console.log(`[STARTED:DISPATCHER]`)
-    }).on('debug', (info) => {
-        console.log(`[DEBUG:DISPATCHER] ${info}`)
     })
-
      }}
 }
 
