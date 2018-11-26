@@ -27,7 +27,7 @@ const queue = getVideos.filter(v => v.thumbnails !== undefined);
 this.queue = queue;
 
 client.user.setActivity("Loading...", {type: "LISTENING"}) 
-stream(client, channel).catch(err => console.log(`[ERROR:STREAMING] ${err}`)); 
+console.log(stream(client, channel).catch(err => console.log(`[ERROR:STREAMING] ${err}`))); 
 
 async function stream() {
     const connection = await client.channels.get(channel).join();
@@ -44,7 +44,8 @@ async function stream() {
         client.user.setActivity(`${queue[0].title}`, {type: "LISTENING"});
         console.log(`[INFO] Started streaming ${queue[0].title} at ${client.channels.get(channel).name}.`)
     }); 
-    dispatcher.setBitrate("auto"); 
+
+    return dispatcher; 
 
      }}
 }
