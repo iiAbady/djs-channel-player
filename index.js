@@ -36,17 +36,15 @@ async function stream() {
     })).on('end', () => {
         const loop = queue.shift();
         queue.push(loop);
-        stream(client, channel, queue[0].url);
+        stream(client, channel);
     }).on('error', (err) => {
         console.error(`[ERROR:DISPATCHER]`, err);
     }).on('start', () => {
         connection.player.streamingData.pausedTime = 0; 
+        client.user.setActivity(`${queue[0].title}`, {type: "LISTENING"});
+        console.log(`[INFO] Started streaming ${queue[0].title} at ${client.channels.get(channel).name}.`)
     }); 
     dispatcher.setBitrate("auto"); 
-
-
-    client.user.setActivity(`${queue[0].title}`, {type: "LISTENING"});
-    console.log(`[INFO] Started streaming ${queue[0].title} at ${client.channels.get(channel).name}.`)
 
      }}
 }
