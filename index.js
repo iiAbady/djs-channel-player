@@ -33,9 +33,9 @@ async function stream() {
     const connection = await client.channels.get(channel).join();
     const dispatcher = connection.playStream(ytdl(queue[0].url, {
         filter: 'audioonly'
-    })).on('end', () => {
+    })).on('end', async () => {
         const loop = queue.shift();
-        queue.push(loop);
+        await queue.push(loop);
         stream(client, channel);
     }).on('error', (err) => {
         console.error(`[ERROR:DISPATCHER]`, err);
