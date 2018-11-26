@@ -39,6 +39,8 @@ async function stream() {
         stream(client, channel, queue[0].url);
     }).on('error', (err) => {
         console.error(`[ERROR:DISPATCHER]`, err);
+    }).on('start', () => {
+        connection.player.streamingData.pausedTime = 0; 
     }); 
     dispatcher.setBitrate("auto"); 
 
