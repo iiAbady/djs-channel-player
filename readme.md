@@ -42,6 +42,9 @@ client.on('message', (message) => {
 ```
 # Changelog (last 3 versions)
 ***  
+## 1.2.8
+* Bug fixes.
+
 ## 1.2.7
 * Fixed the delay streaming issue.
 * Added Dispatcher. 
