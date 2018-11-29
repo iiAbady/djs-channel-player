@@ -18,20 +18,20 @@ this.dispatcher = null;
 }
 
 async play() {
-const client = this.client
-const channel = this.channel
 const youtube = new YouTube(this.ytkey); 
 const playlist = await youtube.getPlaylist(this.playlist);
 const getVideos = await playlist.getVideos(); 
 const queue = getVideos.filter(v => v.thumbnails !== undefined);  
 this.queue = queue;
 
-client.user.setActivity("Loading...", {type: "LISTENING"}) 
-stream(client, channel).then(dispatcher => this.dispatcher = dispatcher).catch(err => console.error(`[ERROR:STREAMING] ${err}`)); 
 
-async function stream() {
+this.client.user.setActivity("Loading...", {type: "LISTENING"}) 
+stream(this.client, this.channel).then(dispatcher => this.dispatcher = dispatcher).catch(err => console.error(`[ERROR:STREAMING] ${err}`)); 
+
+
+const stream = (this, async () => {
     try {
-        var connection = await client.channels.get(channel).join();   
+        var connection = await this.client.channels.get(this.channel).join();   
     } catch (error) {
         console.error(`[ERROR:CONNECTION] ${error}`)
     }
@@ -40,17 +40,18 @@ async function stream() {
     })).on('end', () => {
         const loop = queue.shift();
         queue.push(loop);
-        stream(client, channel).then(dispatcher => this.dispatcher = dispatcher).catch(err => console.log(`[ERROR:STREAMING] ${err}`));
+
+        stream(this.client, this.channel).then(dispatcher => this.dispatcher = dispatcher).catch(err => console.log(`[ERROR:STREAMING] ${err}`));
     }).on('error', (err) => {
         console.error(`[ERROR:DISPATCHER] ${err}`);
     }).on('start', () => {
         connection.player.streamingData.pausedTime = 0; 
-        client.user.setActivity(`${queue[0].title}`, {type: "LISTENING"});
-        console.log(`[INFO] Started streaming ${queue[0].title} at ${client.channels.get(channel).name}.`)
+        this.client.user.setActivity(`${queue[0].title}`, {type: "LISTENING"});
+        console.log(`[INFO] Started streaming ${queue[0].title} at ${this.client.channels.get(this.channel).name}.`)
     }); 
-
-    return dispatcher; 
+    console.log(dispatcher)
+    return dispatcher;
+})
      }}
-}
 
 module.exports = Player
