@@ -45,7 +45,6 @@ const stream = (this, async () => {
         this.client.user.setActivity(`${queue[0].title}`, {type: "LISTENING"});
         console.log(`[INFO] Started streaming ${queue[0].title} at ${this.client.channels.get(this.channel).name}.`)
     }); 
-    console.log(dispatcher)
     return dispatcher;
 })
 
