@@ -25,9 +25,6 @@ const queue = getVideos.filter(v => v.thumbnails !== undefined);
 this.queue = queue;
 
 
-this.client.user.setActivity("Loading...", {type: "LISTENING"}) 
-stream(this.client, this.channel).then(dispatcher => this.dispatcher = dispatcher).catch(err => console.error(`[ERROR:STREAMING] ${err}`)); 
-
 
 const stream = (this, async () => {
     try {
@@ -40,7 +37,6 @@ const stream = (this, async () => {
     })).on('end', () => {
         const loop = queue.shift();
         queue.push(loop);
-
         stream(this.client, this.channel).then(dispatcher => this.dispatcher = dispatcher).catch(err => console.log(`[ERROR:STREAMING] ${err}`));
     }).on('error', (err) => {
         console.error(`[ERROR:DISPATCHER] ${err}`);
@@ -52,6 +48,11 @@ const stream = (this, async () => {
     console.log(dispatcher)
     return dispatcher;
 })
+
+
+this.client.user.setActivity("Loading...", {type: "LISTENING"}) 
+stream(this.client, this.channel).then(dispatcher => this.dispatcher = dispatcher).catch(err => console.error(`[ERROR:STREAMING] ${err}`)); 
+
      }}
 
 module.exports = Player
