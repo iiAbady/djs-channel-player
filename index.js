@@ -27,10 +27,14 @@ const queue = getVideos.filter(v => v.thumbnails !== undefined);
 this.queue = queue;
 
 client.user.setActivity("Loading...", {type: "LISTENING"}) 
-stream(client, channel).then(dispatcher => this.dispatcher = dispatcher).catch(err => console.log(`[ERROR:STREAMING] ${err}`)); 
+stream(client, channel).then(dispatcher => this.dispatcher = dispatcher).catch(err => console.error(`[ERROR:STREAMING] ${err}`)); 
 
 async function stream() {
-    const connection = await client.channels.get(channel).join();
+    try {
+        var connection = await client.channels.get(channel).join();   
+    } catch (error) {
+        console.error(`[ERROR:CONNECTION] ${error}`)
+    }
     const dispatcher = connection.playStream(ytdl(queue[0].url, {
         filter: 'audioonly'
     })).on('end', () => {
@@ -38,7 +42,7 @@ async function stream() {
         queue.push(loop);
         stream(client, channel).then(dispatcher => this.dispatcher = dispatcher).catch(err => console.log(`[ERROR:STREAMING] ${err}`));
     }).on('error', (err) => {
-        console.error(`[ERROR:DISPATCHER]`, err);
+        console.error(`[ERROR:DISPATCHER] ${err}`);
     }).on('start', () => {
         connection.player.streamingData.pausedTime = 0; 
         client.user.setActivity(`${queue[0].title}`, {type: "LISTENING"});
@@ -46,7 +50,6 @@ async function stream() {
     }); 
 
     return dispatcher; 
-
      }}
 }
 
