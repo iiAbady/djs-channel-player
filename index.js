@@ -25,11 +25,9 @@ const queue = getVideos.filter(v => v.thumbnails !== undefined);
 this.queue = queue;
 
 
-
 const stream = (this, async () => {
     try {
-        var connection = await this.client.channels.get(this.channel).join();   
-        return; 
+        var connection = await this.client.channels.get(this.channel).join();    
     } catch (error) {
         console.error(`[ERROR:CONNECTION] Error occurred when joining voice channel.`)
     }
