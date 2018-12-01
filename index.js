@@ -52,7 +52,7 @@ const stream = (this, async () => {
     return dispatcher;
 })
 
-
+this.client.on('error', console.error);
 this.client.user.setActivity("Loading...", {type: "LISTENING"}) 
 stream(this.client, this.channel).then(dispatcher => this.dispatcher = dispatcher).catch(err => console.error(`[ERROR:STREAMING] ${err}`)); 
 
