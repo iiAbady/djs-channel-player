@@ -29,12 +29,18 @@ this.queue = queue;
 const stream = (this, async () => {
     try {
         var connection = await this.client.channels.get(this.channel).join();   
+        return; 
     } catch (error) {
-        console.error(`[ERROR:CONNECTION] ${error}`)
+        console.error(`[ERROR:CONNECTION] Error occurred when joining voice channel.`)
     }
-    const dispatcher = connection.playStream(ytdl(queue[0].url, {
-        filter: 'audioonly'
-    })).on('end', () => {
+    const ytStream = ytdl(queue[0].url, {
+        filter: "audioonly"
+    }).on("error", err => {
+        console.error(`[ERROR:STREAMING] Couldn't play **${queue[0].title}**`, err)
+        queue.shift(); 
+    })
+    const dispatcher = connection.playStream(ytStream)
+    .on('end', () => {
         const loop = queue.shift();
         queue.push(loop);
         stream(this.client, this.channel).then(dispatcher => this.dispatcher = dispatcher).catch(err => console.log(`[ERROR:STREAMING] ${err}`));
