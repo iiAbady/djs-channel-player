@@ -10,7 +10,7 @@ Player.play();
 })
 
 client.on('message', (message) => {
-    const prefixMention = new RegExp(`^<@!?${client.user.id}> `),prefix=message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : '!';
+    const prefixMention = new RegExp(`^<@!?${client.user.id}> `),prefix=message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : 'os!';
     if(message.channel.id === "406529468828614666" || "514155011056467971") {
       if(message.content == `${prefix}np`) {
       return message.channel.send(new RichEmbed().setDescription(`🎵 Now Playing:\n**[${Player.queue[0].title}](${Player.queue[0].url})**`).setThumbnail(Player.queue[0].thumbnails.high.url).setColor(`BLUE`));
@@ -20,7 +20,8 @@ client.on('message', (message) => {
   .setDescription(`🎵 Now Playing:\n**[${Player.queue[0].title}](${Player.queue[0].url})** \n\n🎵 Queue\n`+Player.queue.slice(1, 10).map(item => `${++i}. [${item.title}](${item.url})`).join('\n'))
   .setFooter(`Only displaying the first 10 items in the queue`).setColor('RANDOM').setThumbnail(Player.queue[0].thumbnails.high.url)); 
     } else if(staff.includes(message.author.id) && message.content == `${prefix}skip`) {
-      Player.dispatcher.end(); 
+      message.channel.send(`تخطي الاغنية:\n**${Player.queue[0].title}**`)
+      return Player.dispatcher.end(); 
     }
     }
   })
