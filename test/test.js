@@ -9,6 +9,8 @@ client.on('ready', () => {
 Player.play();
 })
 
+client.on('error', (error) => console.error(error)); 
+
 client.on('message', (message) => {
     const prefixMention = new RegExp(`^<@!?${client.user.id}> `),prefix=message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : 'os!';
     if(message.channel.id === "406529468828614666" || "514155011056467971") {
