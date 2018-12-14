@@ -1,16 +1,14 @@
-# Discord.js Channel Player
-<center>
+# Discord.js Channel Player 
 [![NPM](https://nodei.co/npm/djs-channel-player.png)](https://nodei.co/npm/djs-channel-player/)
-  <p>
-    <a href="https://discord.gg/bRCvFy9"><img src="https://discordapp.com/api/guilds/222078108977594368/embed.png" alt="Discord server" /></a>
-    <a href="https://www.npmjs.com/package/discord.js"><img src="https://img.shields.io/npm/v/discord.js.svg?maxAge=3600" alt="NPM version" /></a>
-    <a href="https://www.npmjs.com/package/discord.js"><img src="https://img.shields.io/npm/dt/discord.js.svg?maxAge=3600" alt="NPM downloads" /></a>
-    <a href="https://travis-ci.org/discordjs/discord.js"><img src="https://travis-ci.org/discordjs/discord.js.svg" alt="Build status" /></a>
-    <a href="https://david-dm.org/discordjs/discord.js"><img src="https://img.shields.io/david/discordjs/discord.js.svg?maxAge=3600" alt="Dependencies" /></a>
-    <a href="https://www.patreon.com/discordjs"><img src="https://img.shields.io/badge/donate-patreon-F96854.svg" alt="Patreon" /></a>
+<div align="center">
+<br />
+ <p>
+ <a href="https://discord.gg/Gskt4Tv"><img src="https://discordapp.com/api/guilds/470205496259772437/embed.png" alt="Discord server" /></a>
+ <a href="https://www.npmjs.com/package/djs-channel-player"><img src="https://img.shields.io/npm/v/djs-channel-player.svg?maxAge=3600" alt="NPM version" /></a>
+<a href="https://www.npmjs.com/package/djs-channel-player"><img src="https://img.shields.io/npm/dt/djs-channel-player.svg?maxAge=3600" alt="NPM downloads" /></a>
+<a href="https://david-dm.org/discordjs/djs-channel-player"><img src="https://img.shields.io/david/Abady321x123/djs-channel-player.svg?maxAge=3600" alt="Dependencies" /></a>
   </p>
-    </center>
-***
+</div>
 
 ## About 
 > A simple lib that make your bot play songs still in a voice channel with your playlist.
