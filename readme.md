@@ -1,6 +1,8 @@
 # Discord.js Channel Player 
-[![NPM](https://nodei.co/npm/djs-channel-player.png)](https://nodei.co/npm/djs-channel-player/)
 <div align="center">
+<p>
+<a href="https://nodei.co/npm/djs-channel-player/"><img src="https://nodei.co/npm/djs-channel-player.png"></a>
+</p>
 <br />
  <p>
  <a href="https://discord.gg/Gskt4Tv"><img src="https://discordapp.com/api/guilds/470205496259772437/embed.png" alt="Discord server" /></a>
