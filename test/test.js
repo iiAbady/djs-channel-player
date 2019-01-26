@@ -1,6 +1,6 @@
 const {Client, RichEmbed} = require('discord.js');
 const client = new Client(); 
-const player = require('../index'); 
+const player = require('../index');
 const Player = new player(client, process.env.YT_KEY, process.env.CHANNEL, process.env.PLAYLIST); 
 client.login(process.env.TOKEN); 
 const staff = ['356355452407119873', '171259176029257728']

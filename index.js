@@ -1,5 +1,6 @@
 const ytdl = require('ytdl-core')
 const YouTube = require('simple-youtube-api')
+const version = require('./package.json').version
 
 class Player { 
     /**
@@ -54,12 +55,8 @@ const stream = (this, async () => {
 this.client.user.setActivity("Loading...", {type: "LISTENING"}) 
 stream(this.client, this.channel).then(dispatcher => this.dispatcher = dispatcher).catch(err => console.error(`[ERROR:STREAMING] ${err}`)); 
 
-     }
-    
- get version() {
-     return require('./package.json').version; 
- }
-    
+     }    
     }
 
 module.exports = Player
+exports.version = version
