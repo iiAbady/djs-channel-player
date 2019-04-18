@@ -55,6 +55,11 @@ client.on('message', (message) => {
 ```
 # Changelog (last 3 versions)
 ***  
+## 1.8.0
+* Changes lib deps 
+• node-opus --> opusscript
+• ytdl-core --> ytdl-core-discord
+
 ## 1.2.8
 * Bug fixes.
 
