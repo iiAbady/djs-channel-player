@@ -53,7 +53,10 @@ client.on('message', (message) => {
 })
 ```
 # Changelog (last 3 versions)
-***  
+***
+## 1.8.3
+Upgrade d.js version to 11.5.0
+
 ## 1.8.0
 * Changes lib deps 
 * * node-opus --> opusscript
