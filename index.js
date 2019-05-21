@@ -37,7 +37,7 @@ class Player {
 				queue.shift();
 			});
 			// eslint-disable-next-line block-scoped-var
-			const dispatcher = connection.playOpusStream(ytStream)
+			const thisDispatcher = connection.playOpusStream(ytStream)
 				.on('end', () => {
 					const loop = queue.shift();
 					queue.push(loop);
@@ -51,7 +51,7 @@ class Player {
 					this.client.user.setActivity(`${queue[0].title}`, { type: 'LISTENING' });
 					console.log(`[INFO] Started streaming: ${queue[0].title} at ${this.client.channels.get(this.channel).name}.`);
 				});
-			return dispatcher;
+			return thisDispatcher;
 		});
 
 		this.client.user.setActivity('Loading...', { type: 'LISTENING' });
