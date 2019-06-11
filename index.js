@@ -1,4 +1,5 @@
-const ytdl = require('ytdl-core-discord');
+/* eslint-disable block-scoped-var */
+const ytdl = require('ytdl-core');
 const YouTube = require('simple-youtube-api');
 const { version } = require('./package.json');
 
@@ -10,10 +11,10 @@ class Player {
      * @param {string} playlist - playlist or video for the bot to play.
      */
 	constructor(client, ytkey, channel, playlist) {
-		this.client = client;
-		this.ytkey = ytkey;
-		this.channel = channel;
-		this.playlist = playlist;
+		this.client = client || null;
+		this.ytkey = ytkey || null;
+		this.channel = channel || null;
+		this.playlist = playlist || null;
 		this.queue = null;
 		this.dispatcher = null;
 	}
@@ -32,12 +33,13 @@ class Player {
 			} catch (error) {
 				console.error(`[ERROR:CONNECTION] Error occurred when joining voice channel.`);
 			}
-			const ytStream = await ytdl(queue[0].url).on('error', err => {
+			const ytStream = ytdl(queue[0].url, {
+				filter: 'audioonly'
+			}).on('error', err => {
 				console.error(`[ERROR:STREAMING] Couldn't play **${queue[0].title}**`, err);
 				queue.shift();
 			});
-			// eslint-disable-next-line block-scoped-var
-			const thisDispatcher = connection.playOpusStream(ytStream)
+			const thisDispatcher = connection.playStream(ytStream)
 				.on('end', () => {
 					const loop = queue.shift();
 					queue.push(loop);
@@ -46,7 +48,6 @@ class Player {
 					console.error(`[ERROR:DISPATCHER] ${err}`);
 				})
 				.on('start', () => {
-					// eslint-disable-next-line block-scoped-var
 					connection.player.streamingData.pausedTime = 0;
 					this.client.user.setActivity(`${queue[0].title}`, { type: 'LISTENING' });
 					console.log(`[INFO] Started streaming: ${queue[0].title} at ${this.client.channels.get(this.channel).name}.`);

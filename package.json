@@ -22,7 +22,7 @@
     "discord.js": "^11.5.0",
     "opusscript": "^0.0.6",
     "simple-youtube-api": "^5.1.1",
-    "ytdl-core-discord": "^1.0.3"
+    "ytdl-core": "^0.29.2"
   },
   "devDependencies": {
     "eslint": "^5.9.0",
