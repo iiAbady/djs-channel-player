@@ -54,6 +54,10 @@ client.on('message', (message) => {
 ```
 # Changelog (last 3 versions)
 ***
+# 1.8.4
+* Changes lib deps
+* * ytdl-core-discord --> ytdl-core
+
 ## 1.8.3
 Upgrade d.js version to 11.5.0
 
