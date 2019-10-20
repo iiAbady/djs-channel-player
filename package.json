@@ -20,13 +20,13 @@
   "license": "MIT",
   "dependencies": {
     "discord.js": "^11.5.0",
-    "opusscript": "^0.0.6",
+    "opusscript": "^0.0.7",
     "simple-youtube-api": "^5.1.1",
-    "ytdl-core": "^0.29.2"
+    "ytdl-core": "^1.0.0"
   },
   "devDependencies": {
-    "eslint": "^5.9.0",
-    "eslint-config-aqua": "^5.0.0"
+    "eslint": "^6.5.1",
+    "eslint-config-aqua": "^7.0.1"
   },
   "eslintConfig": {
     "extends": "aqua/node"

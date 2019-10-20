@@ -49,7 +49,7 @@ class Player {
 				})
 				.on('start', () => {
 					connection.player.streamingData.pausedTime = 0;
-					this.client.user.setActivity(`${queue[0].title}`, { type: 'LISTENING' });
+					this.client.user.setActivity(queue[0].title, { type: 'LISTENING' });
 					console.log(`[INFO] Started streaming: ${queue[0].title} at ${this.client.channels.get(this.channel).name}.`);
 				});
 			return thisDispatcher;
