@@ -1,4 +1,4 @@
-# Discord.js Channel Player 
+﻿# Discord.js Channel Player 
 <div align="center">
 <p>
 <a href="https://nodei.co/npm/djs-channel-player/"><img src="https://nodei.co/npm/djs-channel-player.png"></a>
@@ -54,6 +54,9 @@ client.on('message', (message) => {
 ```
 # Changelog (last 3 versions)
 ***
+# 1.8.6
+* Upgrade lib deps
+
 # 1.8.5
 * Upgrade lib deps
 
@@ -61,21 +64,21 @@ client.on('message', (message) => {
 * Changes lib deps
 * * ytdl-core-discord --> ytdl-core
 
-## 1.8.3
+# 1.8.3
 Upgrade d.js version to 11.5.0
 
-## 1.8.0
+# 1.8.0
 * Changes lib deps 
 * * node-opus --> opusscript
 * * ytdl-core --> ytdl-core-discord
 
-## 1.2.8
+# 1.2.8
 * Bug fixes.
 
-## 1.2.7
+# 1.2.7
 * Fixed the delay streaming issue.
 * Added Dispatcher. 
 
-## 1.2.6
+# 1.2.6
 * Some fixes.
 * Deleted some non-important.
