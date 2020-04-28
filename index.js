@@ -29,19 +29,19 @@ class Player {
 
 		const stream = (this, async () => {
 			try {
-				var connection = await this.client.channels.cache.get(this.channel).join(); // eslint-disable-line no-var
+				// eslint-disable-next-line no-var
+				var connection = await this.client.voice.joinChannel(this.channel);
 			} catch (error) {
 				console.error(`[ERROR:CONNECTION] Error occurred when joining voice channel.`);
 			}
 			const ytStream = ytdl(queue[0].url, {
-				filter: 'audioonly',
-				quality: 'highestaudio'
+				filter: 'audioonly'
 			}).on('error', err => {
 				console.error(`[ERROR:STREAMING] Couldn't play **${queue[0].title}**`, err);
 				queue.shift();
 			});
 			const thisDispatcher = connection.play(ytStream)
-				.on('finish', () => {
+				.on('end', () => {
 					const loop = queue.shift();
 					queue.push(loop);
 					stream(this.client, this.channel).then(dispatcher => this.dispatcher = dispatcher).catch(err => console.log(`[ERROR:STREAMING] ${err}`));
@@ -49,8 +49,9 @@ class Player {
 					console.error(`[ERROR:DISPATCHER] ${err}`);
 				})
 				.on('start', () => {
+					connection.player.streamingData.pausedTime = 0;
 					this.client.user.setActivity(queue[0].title, { type: 'LISTENING' });
-					console.log(`[INFO] Started streaming: ${queue[0].title} at ${this.client.channels.cache.get(this.channel).name}.`);
+					console.log(`[INFO] Started streaming: ${queue[0].title} at ${this.client.channels.get(this.channel).name}.`);
 				});
 			return thisDispatcher;
 		});
