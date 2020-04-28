@@ -1,6 +1,6 @@
 {
   "name": "djs-channel-player",
-  "version": "1.8.6",
+  "version": "2.0.0",
   "description": "A discord channel still music player",
   "main": "index.js",
   "keywords": [

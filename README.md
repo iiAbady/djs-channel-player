@@ -33,7 +33,7 @@ client.on('ready' () => {
 
 ## Example
 ```js
-const {Client, RichEmbed} = require('discord.js');
+const {Client, MessageEmbed} = require('discord.js');
 const client = new Client(); 
 const player = require('djs-channel-player'); 
 const player = new player(client, process.env.YT_KEY, process.env.CHANNEL, process.env.PLAYLIST); 
@@ -48,12 +48,16 @@ client.on('message', (message) => {
     return message.channel.send(`Now Playing: **${player.queue[0].title}** Watch it here: **${player.queue[0].url}**`);
     } else if(message.content == 'queue') {
         let i = 0
-        return message.channel.send(new RichEmbed().setAuthor(`${message.guild.name} - ${player.queue.length} songs.`, message.guild.iconURL).setDescription(player.queue.slice(0, 10).map(item => `#**${++i}** ${item.title}`).join('\n')).setFooter(`Only displaying the first 10 items in the queue`).setColor('RANDOM')); 
+        return message.channel.send(new MessageEmbed().setAuthor(`${message.guild.name} - ${player.queue.length} songs.`, message.guild.iconURL).setDescription(player.queue.slice(0, 10).map(item => `#**${++i}** ${item.title}`).join('\n')).setFooter(`Only displaying the first 10 items in the queue`).setColor('RANDOM')); 
     }
 })
 ```
-# Changelog (last 3 versions)
+# Changelog
 ***
+# 2.0.0
+* Upgrade lib deps
+* Refactor to d.js v12
+
 # 1.8.6
 * Upgrade lib deps
 
