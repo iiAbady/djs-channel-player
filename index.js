@@ -1,6 +1,7 @@
 /* eslint-disable block-scoped-var */
 const ytdl = require('ytdl-core');
 const YouTube = require('simple-youtube-api');
+const { Client } = require('discord.js'); // eslint-disable-line no-unused-vars
 const { version } = require('./package.json');
 
 class Player {
@@ -29,7 +30,7 @@ class Player {
 		const stream = (this, async () => {
 			try {
 				// eslint-disable-next-line no-var
-				var connection = await this.client.channels.get(this.channel).join();
+				var connection = await this.client.voice.joinChannel(this.channel);
 			} catch (error) {
 				console.error(`[ERROR:CONNECTION] Error occurred when joining voice channel.`);
 			}
@@ -39,7 +40,7 @@ class Player {
 				console.error(`[ERROR:STREAMING] Couldn't play **${queue[0].title}**`, err);
 				queue.shift();
 			});
-			const thisDispatcher = connection.playStream(ytStream)
+			const thisDispatcher = connection.play(ytStream)
 				.on('end', () => {
 					const loop = queue.shift();
 					queue.push(loop);
