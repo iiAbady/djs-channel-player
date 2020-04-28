@@ -52,37 +52,3 @@ client.on('message', (message) => {
     }
 })
 ```
-# Changelog
-***
-# 2.0.0
-* Upgrade lib deps
-* Refactor to d.js v12
-
-# 1.8.6
-* Upgrade lib deps
-
-# 1.8.5
-* Upgrade lib deps
-
-# 1.8.4
-* Changes lib deps
-* * ytdl-core-discord --> ytdl-core
-
-# 1.8.3
-Upgrade d.js version to 11.5.0
-
-# 1.8.0
-* Changes lib deps 
-* * node-opus --> opusscript
-* * ytdl-core --> ytdl-core-discord
-
-# 1.2.8
-* Bug fixes.
-
-# 1.2.7
-* Fixed the delay streaming issue.
-* Added Dispatcher. 
-
-# 1.2.6
-* Some fixes.
-* Deleted some non-important.
