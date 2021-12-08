@@ -30,12 +30,13 @@
   "eslintConfig": {
     "extends": "aqua/node"
   },
-  "homepage": "https://github.com/Abady321x123/djs-channel-player",
+  "homepage": "https://github.com/iiAbady/djs-channel-player",
   "bugs": {
-    "url": "https://github.com/Abady321x123/djs-channel-player/issues"
+    "url": "https://github.com/iiAbady/djs-channel-player/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Abady321x123/djs-channel-player.git"
+    "url": "https://github.com/iiAbady/djs-channel-player.git"
   }
 }
+	
