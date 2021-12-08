@@ -1,42 +1,47 @@
 {
-  "name": "djs-channel-player",
-  "version": "2.0.0",
-  "description": "A discord channel still music player",
-  "main": "index.js",
-  "keywords": [
-    "d.js",
-    "channel",
-    "player",
-    "music",
-    "player",
-    "discord",
-    "music"
-  ],
-  "scripts": {
-    "lint": "eslint ./",
-    "test": "npm run lint"
-  },
-  "author": "Abady <gamersspeaks@gmail.com>",
-  "license": "MIT",
-  "dependencies": {
-    "discord.js": "^13.3.1",
-    "simple-youtube-api": "^5.1.1",
-    "ytdl-core": "^4.9.1"
-  },
-  "devDependencies": {
-    "eslint": "^8.4.1",
-    "eslint-config-aqua": "^9.0.2"
-  },
-  "eslintConfig": {
-    "extends": "aqua/node"
-  },
-  "homepage": "https://github.com/iiAbady/djs-channel-player",
-  "bugs": {
-    "url": "https://github.com/iiAbady/djs-channel-player/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/iiAbady/djs-channel-player.git"
-  }
+	"name": "djs-channel-player",
+	"version": "2.0.0",
+	"description": "A discord channel still music player",
+	"main": "index.js",
+	"keywords": [
+		"d.js",
+		"channel",
+		"player",
+		"music",
+		"player",
+		"discord",
+		"music"
+	],
+	"scripts": {
+		"lint": "eslint ./",
+		"prepare": "husky install",
+		"changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+		"test": "npm run lint"
+	},
+	"author": "Abady <gamersspeaks@gmail.com>",
+	"license": "MIT",
+	"dependencies": {
+		"discord.js": "^13.3.1",
+		"simple-youtube-api": "^5.1.1",
+		"ytdl-core": "^4.9.1"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^15.0.0",
+		"@commitlint/config-angular": "^15.0.0",
+		"eslint": "^8.4.1",
+		"eslint-config-aqua": "^9.0.2",
+		"husky": "^7.0.4",
+		"lint-staged": "^12.1.2"
+	},
+	"eslintConfig": {
+		"extends": "aqua/node"
+	},
+	"homepage": "https://github.com/iiAbady/djs-channel-player",
+	"bugs": {
+		"url": "https://github.com/iiAbady/djs-channel-player/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/iiAbady/djs-channel-player.git"
+	}
 }
-	
