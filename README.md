@@ -14,9 +14,6 @@
 ## About 
 > A simple lib that make your bot play videos still in a voice channel with your playlist.
 
-## توضيح
-أي إستعمال خاطئ للبكج يصدر منك إنت وأنا أتبرا منك فيه.
-
 ## Pre-installation
 Before you start to use this library, please don't forget to download [**FFMPEG**](http://ffmpeg.org/download.html) and make sure it's installed correctly in your OS.
 
